@@ -9,7 +9,7 @@ typedef struct cpu_word {
     jumpers_t   jump_flags;
     alu_t       alu;
     registers_t regs;
-    //  B_bus;
+    bbus_t     bus;
 } cpu_word_t;
 
 #endif

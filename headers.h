@@ -2,3 +2,4 @@
 #include "components/jumpers.h"
 #include "components/alu.h"
 #include "components/registers.h"
+#include "components/b_bus.h"
