@@ -3,9 +3,6 @@
 #include "cpu_word.h"
 
 
-int skip[] = {4, 0};
-
-
 cpu_word_t *new_cpu_word();
 void print_cpu_word(cpu_word_t *cpu_w);
 
