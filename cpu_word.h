@@ -4,7 +4,7 @@
 #include "types.h"
 
 
-typedef struct cpu_word {
+typedef struct __attribute__((__packed__)) cpu_word {
     byte     high_addr : 1,
              jamz      : 1,
              jamn      : 1,
@@ -27,14 +27,14 @@ typedef struct cpu_word {
              tos       : 1,
              opc       : 1,
              h         : 1,
-             regs      : 4,
+             bbus      : 4,
              fetch     : 1,
              read      : 1,
              write     : 1,
              mar       : 1;
 } cpu_word_t;
 
-cpu_word_t *new_cpu_word();
-void print_cpu_word(cpu_word_t *cpu_w);
+cpu_word_t new_cpu_word(unsigned long bin);
+void print_cpu_word(cpu_word_t cpu_w);
 
 #endif
