@@ -8,15 +8,15 @@ int registers[N_REGS];
 void write_reg(int reg, int value) {
 
     switch(reg) {
-        case MAR: registers[MAR]   = value; break;
-        case MDR: registers[MDR]   = value; break;
-        case PC : registers[PC]    = value; break;
-        case SP : registers[SP]    = value; break;
-        case LV : registers[LV]    = value; break;
-        case CPP: registers[CPP]   = value; break;
-        case TOS: registers[TOS]   = value; break;
-        case OPC: registers[OPC]   = value; break;
-        case H  : registers[H]     = value; break;
+        case MAR: registers[MAR] = value; break;
+        case MDR: registers[MDR] = value; break;
+        case PC : registers[PC]  = value; break;
+        case SP : registers[SP]  = value; break;
+        case LV : registers[LV]  = value; break;
+        case CPP: registers[CPP] = value; break;
+        case TOS: registers[TOS] = value; break;
+        case OPC: registers[OPC] = value; break;
+        case H  : registers[H]   = value; break;
         default : printf("Unabled to write in %d\n", reg); break;
     }
 }
