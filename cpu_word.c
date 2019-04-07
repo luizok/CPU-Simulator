@@ -42,7 +42,7 @@ void print_cpu_word(cpu_word_t cpu_w) {
     print_byte(word[4], 5, 8);
 
     printf("\t|\t");
-    hex_print(word, sizeof(cpu_word_t)-1);  // -1 because byte padding
+    hex_print(word, sizeof(cpu_word_t));
     printf("\n");
 }
 
