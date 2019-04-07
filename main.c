@@ -3,17 +3,16 @@
 #include "types.h"
 #include "registers.h"
 #include "cpu_word.h"
+#include "firmware.h"
 
 
-int main(int argc, char *argv) {
+int main(int argc, char **argv) {
 
-    cpu_word_t word = WORD(011, 001010101, 11110010, 001111110, 110, 0101);
+    init_firmware();
 
-    printf("TAMAIN = %d\n", (int) sizeof(word));
+    printf("sizeof(cpu_word_t) = %d\n", (int) sizeof(cpu_word_t));
+    cpu_word_t word = get_opcode(SUB);
     print_cpu_word(word);
-
-    write_reg(H, 202);
-    printf("MDR = %d\n", load_reg_in_bbus(H));
 
     return EXIT_SUCCESS;
 }
