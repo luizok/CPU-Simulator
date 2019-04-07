@@ -1,36 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "types.h"
+#include "registers.h"
 #include "cpu_word.h"
 
 
 int main(int argc, char *argv) {
 
-    cpu_word_t *word = (cpu_word_t*) calloc(1, sizeof(cpu_word_t));
+    cpu_word_t word = new_cpu_word(0b001111110000001111001101010101101011);
 
-    word->unused = 0;
-
-    word->jmpc = 1;
-    word->jamn = 0;
-    word->jamz = 1;
-
-    word->high_addr = 1;
-    word->next_addr  = 0b10101010;
-
-    word->f_1 = 1;
-    word->inc = 1;
-
-    word->h = 1;
-    word->opc = 1;
-    word->mar = 1;
-
-    word->fetch = 1;
-
-    word->regs = 0b1011;
-
-    printf("TAMAIN = %d\n", (int) sizeof(*word));
+    printf("TAMAIN = %d\n", (int) sizeof(word));
     print_cpu_word(word);
+
+    write_reg(H, 202);
+    printf("MDR = %d\n", load_reg_in_bbus(H));
 
     return EXIT_SUCCESS;
 }
