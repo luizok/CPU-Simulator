@@ -26,11 +26,11 @@ void print_cpu_word(cpu_word_t cpu_w) {
 
     byte *word = (byte*) &cpu_w;
 
-    printf("JAM  NEXT_ADDR    ALU         C      MEM   B  \n");
-    print_byte(word[0], 5, 7);
-    printf("  ");
+    printf("NEXT_ADDR  JAM  ALU         C        MEM   B  \n");
     print_byte(word[0], 8, 8);
     print_byte(word[1], 1, 8);
+    printf("  ");
+    print_byte(word[0], 5, 7);
     printf("  ");
     print_byte(word[2], 1, 8);
     printf("  ");
