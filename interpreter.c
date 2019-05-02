@@ -65,7 +65,7 @@ void interpret(int memory[], int starting_address){ //função principal do inte
     }
 }
 
-int main(int argc, char const *argv[]){
+int maininterpreter(int argc, char const *argv[]){
     unsigned long int mem[512];
     for(int i = 0; i < 512; i++){
         mem[i] = 0;

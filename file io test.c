@@ -4,7 +4,7 @@
 
 typedef unsigned long microcode;
 
-int main(int argc, char const *argv[])
+int maintest(int argc, char const *argv[])
 {
     microcode teste[512];
     for(int i = 0; i < 512; i++)

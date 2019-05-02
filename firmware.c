@@ -4,9 +4,7 @@
 #include "cpu_word.h"
 #include "types.h"
 
-
-cpu_word_t firmware[0x1FF];
-
+cpu_word_t firmware[0x200];
 
 cpu_word_t get_opcode(char opcode) {
 
@@ -51,4 +49,5 @@ void init_firmware(void) {
     firmware[0x0E] = WORD(000, 000001111, 00010100, 000000001, 010, 0010); //MAR <- MBR; read;
     firmware[0x0F] = WORD(000, 000010000, 00010100, 100000000, 000, 0000); //H <- MDR;
     firmware[0x10] = WORD(000, 000000000, 00111111, 010000000, 000, 1000); //OPC <- OPC - H; GOTO MAIN;
+
 }
