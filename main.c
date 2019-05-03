@@ -199,19 +199,26 @@ int main(int argc, char **argv) {
 
     init_firmware();
 
+    FILE *fileRead = fopen("microprog.rom","rb");
+    assert(fileRead);
+    fread( firmware, sizeof(firmware[0]), 512, fileRead);
+        
+    
+    fclose(fileRead);
+
     printf("sizeof(cpu_word_t) = %d\n", (int) sizeof(cpu_word_t));
-    cpu_word_t word = get_opcode(SUB);
+    cpu_word_t word = get_opcode(ADD);
     print_cpu_word(word);
 
-    FILE *file1 = fopen("microprog.rom","wb");
-    assert(file1);
-    fwrite( firmware, sizeof(firmware[0]), 512, file1);
-    fclose(file1);
+    FILE *fileWrite = fopen("microprog.rom","wb");
+    assert(fileWrite);
+    fwrite( firmware, sizeof(firmware[0]), 512, fileWrite);
+    fclose(fileWrite);
 
-    FILE *file2 = fopen("microprog.rom","rb");
-    assert(file2);
-    fread( firmware, sizeof(firmware[0]), 512, file2);
-    fclose(file2);
+    FILE *fileRead = fopen("microprog.rom","rb");
+    assert(fileRead);
+    fread( firmware, sizeof(firmware[0]), 512, fileRead);
+    fclose(fileRead);
 
     return EXIT_SUCCESS;
 }
