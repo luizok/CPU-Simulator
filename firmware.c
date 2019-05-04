@@ -65,10 +65,10 @@ void init_firmware(void) {
 
     fclose(file);
 
-    printf("printando 20 primeiros binarios em firmware:\n");
+    /*printf("printando 20 primeiros binarios em firmware:\n");
     for(int i = 0; i < 20; i++)
     {
         print_cpu_word(firmware[i]);
-    }
+    }*/
     
 }
