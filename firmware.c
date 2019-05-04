@@ -13,12 +13,26 @@ cpu_word_t firmware[FW_LEN];
 cpu_word_t get_opcode(char opcode) {
 
     switch(opcode) {
-        case NOP : return firmware[NOP];
-        case ADD : return firmware[ADD];
-        case MOV : return firmware[MOV];
-        case GOTO: return firmware[GOTO];
-        case JZ  : return firmware[JZ];
-        case SUB : return firmware[SUB];
+        case NOP                    : return firmware[NOP];
+        case IADD                   : return firmware[IADD];
+        case ISUB                   : return firmware[ISUB];
+        case IAND                   : return firmware[IAND];
+        case IOR                    : return firmware[IOR];
+        //case DUP                    : return firmware[DUP];
+        //case POP                    : return firmware[POP];
+        //case SWAP                   : return firmware[SWAP];
+        case BIPUSH                 : return firmware[BIPUSH];
+        case ILOAD                  : return firmware[ILOAD];
+        case ISTORE                 : return firmware[ISTORE];
+        //case WIDE                   : return firmware[WIDE];
+        //case LDC_W                  : return firmware[LDC_W];
+        //case IINC                   : return firmware[IINC];
+        case GOTO                   : return firmware[GOTO];
+        //case IFLT                   : return firmware[IFLT];
+        //case IFEQ                   : return firmware[IFEQ];
+        case IF_ICMPEQ              : return firmware[IF_ICMPEQ];
+        //case INVOKEVIRTUAL          : return firmware[INVOKEVIRTUAL];
+        //case IRETURN                : return firmware[IRETURN];
         default: printf("Invalid OPCODE = 0x%03X\n", opcode);
     }
 }
