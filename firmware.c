@@ -56,16 +56,9 @@ void init_firmware(void) {
 */
     system("/usr/bin/python3 main.py");
 
-    unsigned long array[512];
-    FILE *file = fopen("microprog.rom","rb");
+    FILE *file = fopen("microprog_flipped.rom","rb");
     assert(file);
-    fread( array, sizeof(array[0]), 512, file);
-
-    for(int i = 0; i < 512; i++)
-    {
-        firmware[i] = new_cpu_word(array[i]);
-    }
-
+    fread( firmware, sizeof(firmware[0]), 512, file);
     fclose(file);
 }
 
