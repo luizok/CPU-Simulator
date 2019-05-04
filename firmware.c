@@ -7,7 +7,7 @@
 #include "types.h"
 
 
-cpu_word_t firmware[0x200];
+cpu_word_t firmware[FW_LEN];
 
 
 cpu_word_t get_opcode(char opcode) {
@@ -54,7 +54,7 @@ void init_firmware(void) {
     firmware[0x0F] = WORD(000, 000010000, 00010100, 100000000, 000, 0000); //H <- MDR;
     firmware[0x10] = WORD(000, 000000000, 00111111, 010000000, 000, 1000); //OPC <- OPC - H; GOTO MAIN;
 */
-    execl("/usr/bin/python3", "/usr/bin/python3", "main.py", NULL);
+    system("/usr/bin/python3 main.py");
 
     unsigned long array[512];
     FILE *file = fopen("microprog.rom","rb");
@@ -67,11 +67,13 @@ void init_firmware(void) {
     }
 
     fclose(file);
+}
 
-    // /*printf("printando 20 primeiros binarios em firmware:\n");
-    for(int i = 0; i < 20; i++)
-    {
+void print_firmware(void) {
+
+    printf("\tNEXT_ADDR  JAM    ALU         C      MEM   B  \n");
+    for(int i=0; i < FW_LEN; i++) {
+        printf("0x%03X   ", i);
         print_cpu_word(firmware[i]);
     }
-    
 }

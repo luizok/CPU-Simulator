@@ -17,7 +17,7 @@ def read_rom():
             cmds = rom.read()
 
             for i in range(0, len(cmds), 8):
-                print('ADDR = 0x%03X   ' % i, end='', flush=True)
+                # print('ADDR = 0x%03X   ' % i, end='', flush=True)
                 hex_str = ''
                 fmt_str = ''
 
@@ -28,8 +28,8 @@ def read_rom():
                 bin_arr = list(fmt_str.replace(' ', ''))
                 new_bin = (4 * ['0']) + flip_bits(bin_arr[4:])
 
-                print(''.join(new_bin))
-                print('')
+                # print(''.join(new_bin))
+                # print('')
 
                 t = [int(''.join(new_bin[i:i+8]), 2) for i in range(0, len(new_bin), 8)]
                 f_rom.write(bytearray(t))

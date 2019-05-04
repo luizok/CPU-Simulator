@@ -9,10 +9,7 @@
 int main(int argc, char **argv) {
 
     init_firmware();
-
-    printf("sizeof(cpu_word_t) = %d\n", (int) sizeof(cpu_word_t));
-    cpu_word_t word = get_opcode(SUB);
-    print_cpu_word(word);
+    print_firmware();
 
     return EXIT_SUCCESS;
 }
