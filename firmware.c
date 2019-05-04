@@ -54,7 +54,7 @@ void init_firmware(void) {
     firmware[0x0F] = WORD(000, 000010000, 00010100, 100000000, 000, 0000); //H <- MDR;
     firmware[0x10] = WORD(000, 000000000, 00111111, 010000000, 000, 1000); //OPC <- OPC - H; GOTO MAIN;
 */
-    execl("python3", "main.py", NULL);
+    execl("/usr/bin/python3", "/usr/bin/python3", "main.py", NULL);
 
     unsigned long array[512];
     FILE *file = fopen("microprog.rom","rb");
