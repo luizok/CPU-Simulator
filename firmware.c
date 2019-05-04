@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "firmware.h"
 #include "cpu_word.h"
 #include "types.h"
 
 
-cpu_word_t firmware[0x1FF];
+cpu_word_t firmware[0x200];
 
 
 cpu_word_t get_opcode(char opcode) {
@@ -22,7 +23,7 @@ cpu_word_t get_opcode(char opcode) {
 }
 
 void init_firmware(void) {
-    // NOP | MAIN
+/*  // NOP | MAIN
     firmware[0x00] = WORD(100, 000000000, 00110101, 000000100, 001, 0001); // PC <- PC + 1; fetch; GOTO MBR;
     // TODO why skip address 0x01?
     // ADD OPC, mem[addr] | OPC <- OPC + mem[addr];
@@ -51,4 +52,23 @@ void init_firmware(void) {
     firmware[0x0E] = WORD(000, 000001111, 00010100, 000000001, 010, 0010); //MAR <- MBR; read;
     firmware[0x0F] = WORD(000, 000010000, 00010100, 100000000, 000, 0000); //H <- MDR;
     firmware[0x10] = WORD(000, 000000000, 00111111, 010000000, 000, 1000); //OPC <- OPC - H; GOTO MAIN;
+*/
+    unsigned long array[512];
+    FILE *file = fopen("microprog.rom","rb");
+    assert(file);
+    fread( array, sizeof(array[0]), 512, file);
+
+    for(int i = 0; i < 512; i++)
+    {
+        firmware[i] = new_cpu_word(array[i]);
+    }
+
+    fclose(file);
+
+    printf("printando 20 primeiros binarios em firmware:\n");
+    for(int i = 0; i < 20; i++)
+    {
+        print_cpu_word(firmware[i]);
+    }
+    
 }
