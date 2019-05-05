@@ -70,10 +70,10 @@ void init_firmware(void) {
 */
     system("/usr/bin/python3 main.py");
 
-    FILE *file = fopen("microprog_flipped.rom","rb");
-    assert(file);
-    fread( firmware, sizeof(firmware[0]), 512, file);
-    fclose(file);
+    FILE *file_firmware = fopen("microprog_flipped.rom","rb");
+    assert(file_firmware);
+    fread( firmware, sizeof(firmware[0]), FW_LEN, file_firmware);
+    fclose(file_firmware);
 }
 
 void print_firmware(void) {

@@ -34,6 +34,7 @@ typedef struct __attribute__((__packed__)) cpu_word {
              mar       : 1;
 } cpu_word_t;
 
+void print_byte(byte b, byte from, byte to);
 cpu_word_t new_cpu_word(unsigned long bin);
 void print_cpu_word(cpu_word_t cpu_w);
 
