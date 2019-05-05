@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
 //    init_firmware();
 //    print_firmware();
     init_memory();
-    print_memory_until_byte(70);
+    print_memory_until_byte(10);
 
     return EXIT_SUCCESS;
 }
