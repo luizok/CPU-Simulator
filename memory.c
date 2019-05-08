@@ -25,7 +25,7 @@ void init_memory(void){
 
 void print_memory_until_byte(int len){
     
-    printf("File size: %u\n", *size);
+//    printf("File size: %u\n", *size);
     for(int i = 0; i < len; i++) {
         printf("0x%02x\t", memory[i]);
         print_byte(memory[i], 1, 8);
