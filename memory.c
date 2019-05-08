@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+#include "registers.h"
 #include "memory.h"
 #include "types.h"
 #include "cpu_word.h"
@@ -21,6 +22,8 @@ void init_memory(void){
     assert(file_memory);
     fread(memory, sizeof(memory[0]), MEM_LEN, file_memory);
     fclose(file_memory);
+
+    init_regs(memory);
 }
 
 void print_memory_until_byte(int len){

@@ -1,6 +1,8 @@
 #ifndef REGISTERS_H
 #define REGISTERS_H
 
+#include "types.h"
+
 #define N_REGS 11
 
 #define MDR    0b0000  // 0
@@ -17,7 +19,8 @@
 #define H      0b1010  // 10
 
 
-void write_reg(int reg, int value);
+void write_reg(int reg, uint32_t value);
 int load_reg_in_bbus(int reg);
+void init_regs(byte* mem);
 
 #endif

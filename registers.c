@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "types.h"
 #include "registers.h"
 
 
-int registers[N_REGS];
+uint32_t registers[N_REGS];
 
-void write_reg(int reg, int value) {
+void write_reg(int reg, uint32_t value) {
 
     switch(reg) {
         case MAR: registers[MAR] = value; break;
@@ -35,4 +37,20 @@ int load_reg_in_bbus(int reg) {
         case OPC : return registers[OPC];
         default  : printf("Unabled to load from %d\n", reg); break;
     }
+}
+
+void init_regs(byte* mem){
+    uint32_t aux;
+    memcpy(&aux, &(mem[8]), sizeof(uint32_t));
+    write_reg(CPP, aux);
+    // printf("%u\n\n", registers[CPP]);
+    memcpy(&aux, &(mem[12]), sizeof(uint32_t));
+    write_reg(LV, aux);
+    // printf("%u\n\n", registers[LV]);
+    memcpy(&aux, &(mem[16]), sizeof(uint32_t));
+    write_reg(PC, aux);
+    // printf("%u\n\n", registers[PC]);
+    memcpy(&aux, &(mem[20]), sizeof(uint32_t));
+    write_reg(SP, aux);
+    // printf("%u\n\n", registers[SP]);
 }
