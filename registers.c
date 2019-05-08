@@ -6,6 +6,7 @@
 
 
 uint32_t registers[N_REGS];
+int num_vars;
 
 void write_reg(int reg, uint32_t value) {
 
@@ -43,14 +44,18 @@ void init_regs(byte* mem){
     uint32_t aux;
     memcpy(&aux, &(mem[8]), sizeof(uint32_t));
     write_reg(CPP, aux);
-    printf("%u\n\n", registers[CPP]);
+    printf("%u\n", registers[CPP]);
     memcpy(&aux, &(mem[12]), sizeof(uint32_t));
     write_reg(LV, aux);
-    printf("%u\n\n", registers[LV]);
+    printf("%u\n", registers[LV]);
     memcpy(&aux, &(mem[16]), sizeof(uint32_t));
     write_reg(PC, aux);
-    printf("%u\n\n", registers[PC]);
+    printf("%u\n", registers[PC]);
     memcpy(&aux, &(mem[20]), sizeof(uint32_t));
     write_reg(SP, aux);
     printf("%u\n\n", registers[SP]);
+
+    num_vars = load_reg_in_bbus(SP) - load_reg_in_bbus(LV) - 1;
+    printf("%u\n\n", num_vars);
+    int *vars = malloc((num_vars + 1)*sizeof(int));
 }
