@@ -26,7 +26,7 @@
 //#define IRETURN         0x6B
 
 void init_firmware(void);
-cpu_word_t get_opcode(char opcode);
+cpu_word_t get_opcode(byte opcode);
 void print_firmware(void);
 
 #endif

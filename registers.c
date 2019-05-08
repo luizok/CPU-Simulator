@@ -43,14 +43,14 @@ void init_regs(byte* mem){
     uint32_t aux;
     memcpy(&aux, &(mem[8]), sizeof(uint32_t));
     write_reg(CPP, aux);
-    // printf("%u\n\n", registers[CPP]);
+    printf("%u\n\n", registers[CPP]);
     memcpy(&aux, &(mem[12]), sizeof(uint32_t));
     write_reg(LV, aux);
-    // printf("%u\n\n", registers[LV]);
+    printf("%u\n\n", registers[LV]);
     memcpy(&aux, &(mem[16]), sizeof(uint32_t));
     write_reg(PC, aux);
-    // printf("%u\n\n", registers[PC]);
+    printf("%u\n\n", registers[PC]);
     memcpy(&aux, &(mem[20]), sizeof(uint32_t));
     write_reg(SP, aux);
-    // printf("%u\n\n", registers[SP]);
+    printf("%u\n\n", registers[SP]);
 }
